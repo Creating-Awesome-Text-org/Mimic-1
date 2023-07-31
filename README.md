@@ -22,3 +22,22 @@ LangChain presents an optimal framework in which to work with OpenAI and its LLM
 - [Using ChatGPT with YOUR OWN Data. This is magical. (LangChain OpenAI API)](https://youtu.be/9AXP7tCI9PI?si=JHWz1gXPsrirzkx2)
 - [Create Your Own ChatGPT with PDF Data in 5 Minutes (LangChain Tutorial)](https://youtu.be/au2WVVGUvc8?si=zIr2_AOj_-BUwIrL)
 
+
+## Outline
+
+### Project Structure
+```
+kb (Knowledge Base) /
+    Local information making up the knowledge base of the project
+notebooks/
+    Jupyter notebooks dealing with exploration and experimentation outside of the application developement
+src/
+    The directory containing the source code for the application
+```
+
+### Local Information Formats Supported
+- CSV
+- Docx
+- PDF
+- txt
+- JSON
