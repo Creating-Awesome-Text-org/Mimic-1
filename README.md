@@ -5,6 +5,16 @@ _Author mimicking using OpenAI with available local information._
 Use existing generative AI models created by OpenAI (ChatGPT) within the context of local information
 in order to effectively mimic the author's style with requisite knowledge. 
 
+## Important
+In order to use this software please ensure that you have an OpenAI API key. 
+Please never share this key publically or on GitHub. 
+When using this software execute the following in Python to register and make use of your key:
+
+```
+os.environ['OPENAI_API_KEY'] = 'KEY'
+```
+Please replace **KEY** with your OpenAI API key.
+
 ## Privacy
 OpenAI will come into contact with local information sources. 
 OpenAI collects account information, user content, communication information, and social media interactions ([https://openai.com/policies/privacy-policy](https://openai.com/policies/privacy-policy))
