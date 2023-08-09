@@ -6,8 +6,8 @@ Use existing generative AI models created by OpenAI (ChatGPT) within the context
 in order to effectively mimic the author's style with requisite knowledge. 
 
 ## Important
-In order to use this software please ensure that you have an OpenAI API key. 
-Please never share this key publically or on GitHub. 
+In order to use this software please ensure that you have OpenAI and Pinecone API keys. 
+Please never share this key publicly or on GitHub. 
 When using this software execute the following in Python to register and make use of your key:
 
 ```
