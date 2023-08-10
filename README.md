@@ -12,6 +12,8 @@ When using this software execute the following in Python to register and make us
 
 ```
 os.environ['OPENAI_API_KEY'] = 'KEY'
+os.environ["PINECONE_API_KEY"] = 'KEY'
+os.environ["PINECONE_ENV"] = 'ENV'
 ```
 Please replace **KEY** with your OpenAI API key.
 
