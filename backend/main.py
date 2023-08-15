@@ -7,7 +7,7 @@ import CredentialsEnvironment
 app = FastAPI()
 
 # CORS HANDLING: Local host allows for all origins as there will be no hosted info
-origins = [""]
+origins = ["*"]
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["*"], allow_headers=["*"])
 
 

@@ -1,0 +1,83 @@
+/* style.css */
+
+/* Reset some default margin and padding */
+body, h1, p, label, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the form on the page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #f5f5f5;
+}
+
+/* Basic styling for the header */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.header img {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+}
+
+.header_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.main_text {
+    font-size: 26.4px;
+    font-weight: bold;
+}
+
+.sub_text {
+    font-size: 15.4px;
+}
+
+/* Styling for the form */
+#credentialForm {
+    margin-top: 20px;
+    padding: 20px 20px 20px 20px; /* Adjust padding for equal spacing */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 90%;
+    max-width: 400px; /* Limit the maximum width of the form */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
