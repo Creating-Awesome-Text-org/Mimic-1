@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Upload</title>
     <link rel="stylesheet" href="styles/upload_style.css">
-    <title>Your Page Title</title>
 </head>
 <body>
     <div class="header">
@@ -34,6 +34,9 @@
             </div>
         </button>
     </div>
-    <script src="script.js"></script>
+    <input type="file" id="fileInput" multiple style="display: none;"> <!-- Hidden file input -->
+    <input type="file" id="directoryInput" webkitdirectory style="display: none;"> <!-- Hidden directory input -->
+    <script src="javascript/data_upload.js"></script>
+
 </body>
 </html>
