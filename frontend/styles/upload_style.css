@@ -1,0 +1,102 @@
+body, h1, p, label, input, button {
+    margin: 0;
+    padding: 0;
+    border: none; /* Remove default border from buttons */
+    background: none; /* Remove default background from buttons */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ecebeb;
+}
+
+.header img {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+}
+
+.header_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.main_text {
+    font-size: 26.4px;
+    font-weight: bold;
+}
+
+.sub_text {
+    font-size: 15.4px;
+}
+
+/* Container to center content */
+
+/* Styling for each item */
+.item-button {
+    display: flex; /* Make button a flex container */
+    align-items: stretch; /* Stretch items to equal height */
+    width: 60%; /* Adjust as needed */
+    max-width: 800px; /* Limit the maximum width of the items */
+    padding: 0; /* Reset padding */
+    border: none; /* Remove border */
+    background: none; /* Remove background */
+    cursor: pointer; /* Add cursor pointer on hover */
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: background-color 0.3s; /* Smooth hover transition */
+}
+
+.item-button:hover {
+    background-color: #cccbcb;
+}
+
+.item {
+    display: flex;
+    flex-direction: row; /* Ensure items are laid out horizontally */
+    align-items: stretch; /* Stretch items to equal height */
+    width: 100%; /* Make sure buttons are full width */
+}
+
+/* Styling for the image */
+.image {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+/* Styling for the text box */
+.text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Adjust this property to align text to the left */
+}
+
+.title {
+    color: black;
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-bottom: 5px;
+    align-self: flex-start; /* Align title to the left */
+}
+
+.description {
+    color: black;
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}

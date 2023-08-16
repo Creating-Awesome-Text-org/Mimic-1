@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/upload_style.css">
     <title>Your Page Title</title>
 </head>
 <body>
@@ -15,17 +15,25 @@
         </div>
     </div>
     <div class="container">
-        <div class="box" style="left: 340px; top: 355px;"></div>
-        <img class="image" style="left: 348px; top: 355px;" src="resources/file_icon.png" alt="File icon">
-        <div class="text-box" style="left: 261px; top: 564px;">
-            <span class="title">File Upload:</span>
-            <span class="description">Please select a file from your local computer to upload to Pinecone.</span>
-        </div>
-        <img class="image" style="left: 920px; top: 393px;" src="resources/folder_icon.png" alt="Folder icon">
-        <div class="text-box" style="left: 824px; top: 564px;">
-            <span class="title">Directory Upload:</span>
-            <span class="description">Please select a directory from your local computer to upload to Pinecone. This serves as a bulk upload capability.</span>
-        </div>
+        <button class="item-button" onclick="handleFileUpload()">
+            <div class="item">
+                <img class="image" src="resources/file_icon.png" alt="File icon">
+                <div class="text-box">
+                    <span class="title">File Upload:</span>
+                    <span class="description">Please select a file from your local computer to upload to Pinecone.</span>
+                </div>
+            </div>
+        </button>
+        <button class="item-button" onclick="handleDirectoryUpload()">
+            <div class="item">
+                <img class="image" src="resources/folder_icon.png" alt="Folder icon">
+                <div class="text-box">
+                    <span class="title">Directory Upload:</span>
+                    <span class="description">Please select a directory from your local computer to upload to Pinecone. This serves as a bulk upload capability.</span>
+                </div>
+            </div>
+        </button>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
