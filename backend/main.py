@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
+from fastapi import File, UploadFile
+from typing import Annotated
 
 import CredentialsEnvironment
 
@@ -30,3 +32,7 @@ async def mimic_credentials(credentials: Credentials):
     print("Credentials received")
     return {"message": "Environmental credentials setup"}
 
+
+@app.post("/files_upload")
+async def files_upload(files: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")]):
+    print({"filenames": [file.filename for file in files]})
