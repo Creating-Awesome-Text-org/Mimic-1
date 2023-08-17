@@ -15,7 +15,7 @@ function handleFileUpload() {
                 formData.append("files", file);
             }
 
-            fetch(endpoint_root + "/upload_files_endpoint", {
+            fetch(endpoint_root + "/files_upload", {
                 method: "POST",
                 body: formData
             })
@@ -39,19 +39,15 @@ function handleDirectoryUpload() {
     directoryInput.click();
 
     directoryInput.addEventListener("change", async (event) => {
-        const directory = event.target.files[0];
+        const files = event.target.files;
 
-        if (directory) {
+        if (files.length > 0) {
             const formData = new FormData();
-            const directoryFiles = Array.from(directory.webkitGetAsEntry().createReader());
-
-            for (const file of directoryFiles) {
-                if (file.isFile) {
-                    formData.append("files", await file.file());
-                }
+            for (const file of files) {
+                formData.append("files", file);
             }
 
-            fetch("/upload_directory", {
+            fetch(endpoint_root + "/files_upload", {
                 method: "POST",
                 body: formData
             })
@@ -63,7 +59,7 @@ function handleDirectoryUpload() {
                 console.error("Error:", error);
             });
         } else {
-            console.log("No directory selected.");
+            console.log("No files selected.");
         }
     });
 }

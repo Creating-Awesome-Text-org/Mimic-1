@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
-from fastapi import File, UploadFile
+from fastapi import UploadFile, File, HTTPException
 from typing import Annotated
+
+import os
+import shutil
+import zipfile
 
 import CredentialsEnvironment
 
@@ -36,3 +40,6 @@ async def mimic_credentials(credentials: Credentials):
 @app.post("/files_upload")
 async def files_upload(files: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")]):
     print({"filenames": [file.filename for file in files]})
+
+
+
