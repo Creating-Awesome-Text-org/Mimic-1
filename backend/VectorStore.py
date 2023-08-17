@@ -33,7 +33,7 @@ def prep_txt_documents(file_path: str):
 
 
 def embed_documents(docs, index_name: str):
-    embeddings = OpenAIEmbeddings(openai_api_key='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')  # Initialize OpenAI embeddings process (chunks to vector model)
+    embeddings = OpenAIEmbeddings(openai_api_key='OPENAI KEY')  # Initialize OpenAI embeddings process (chunks to vector model)
 
     pinecone.init(
         api_key=os.getenv("PINECONE_API_KEY"),  # Initialize pinecone link
