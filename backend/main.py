@@ -4,7 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi import UploadFile, File, HTTPException
 from typing import Annotated
 
-import CredentialsEnvironment
+from backend import CredentialsEnvironment
 
 app = FastAPI()
 
