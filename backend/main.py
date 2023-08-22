@@ -96,8 +96,6 @@ async def process_pdf_file(file: bytes, file_name: str):
 
         loader = PyPDFLoader(temp_file_path)
         docs = loader.load_and_split()
-
-        print(docs)
         return docs
 
 
@@ -111,7 +109,6 @@ async def process_md_file(file: bytes, file_name: str):
 
         text_splitter = CharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         docs = text_splitter.split_documents(document_text)
-        print(docs)
         return docs
 
 
@@ -125,7 +122,6 @@ async def process_docx_file(file: bytes, file_name: str):
 
         text_splitter = CharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         docs = text_splitter.split_documents(document_text)
-        print(docs)
         return docs
 
 
