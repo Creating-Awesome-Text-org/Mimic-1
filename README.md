@@ -8,14 +8,7 @@ in order to effectively mimic the author's style with requisite knowledge.
 ## Important
 In order to use this software please ensure that you have OpenAI and Pinecone API keys. 
 Please never share this key publicly or on GitHub. 
-When using this software execute the following in Python to register and make use of your key:
 
-```
-os.environ['OPENAI_API_KEY'] = 'KEY'
-os.environ["PINECONE_API_KEY"] = 'KEY'
-os.environ["PINECONE_ENV"] = 'ENV'
-```
-Please replace **KEY** with your OpenAI API key.
 
 ## Privacy
 OpenAI will come into contact with local information sources. 
@@ -43,13 +36,14 @@ kb (Knowledge Base) /
     Local information making up the knowledge base of the project
 notebooks/
     Jupyter notebooks dealing with exploration and experimentation outside of the application developement
-src/
-    The directory containing the source code for the application
+frontend/
+    The directory containing the source code for the application frontend. Comprised of html, css, and javascript
+backend/
+    The directory containing the source code fro the application backend. Powered by FastAPI
 ```
 
 ### Local Information Formats Supported
-- CSV
 - Docx
 - PDF
 - txt
-- JSON
+- md
