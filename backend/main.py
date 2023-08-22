@@ -6,6 +6,8 @@ from typing import Annotated
 
 from backend import CredentialsEnvironment
 
+from langchain.document_loaders import TextLoader
+
 app = FastAPI()
 
 # CORS HANDLING: Local host allows for all origins as there will be no hosted info
@@ -33,9 +35,18 @@ async def mimic_credentials(credentials: Credentials):
     return {"message": "Environmental credentials setup"}
 
 
+async def process_uploaded_file(file_content: bytes):
+    # Use the langchain library, for example using TextLoader
+    text_loader = TextLoader(file_content)
+    document_text = text_loader.load()
+    return document_text
+
+
 @app.post("/files_upload")
 async def files_upload(files: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")]):
-    print({"filenames": [file.filename for file in files]})
+    for file in files:
+        file_content = await file.read()
 
-
+        document_text = await process_uploaded_file(file_content)
+        print(document_text)
 
