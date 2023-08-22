@@ -1,8 +1,10 @@
+import tempfile
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
-from fastapi import UploadFile, File, HTTPException
-from typing import Annotated
+from fastapi import UploadFile, File
+from typing import List
 
 from backend import CredentialsEnvironment
 
@@ -35,18 +37,42 @@ async def mimic_credentials(credentials: Credentials):
     return {"message": "Environmental credentials setup"}
 
 
-async def process_uploaded_file(file_content: bytes):
-    # Use the langchain library, for example using TextLoader
-    text_loader = TextLoader(file_content)
-    document_text = text_loader.load()
-    return document_text
+async def process_txt_file(file_content: bytes):
+    # Create a temporary file and write the content to it
+    with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+        temp_file.write(file_content)
+
+        # Use the langchain library to load the text from the temporary file
+        text_loader = TextLoader(temp_file.name)
+        document_text = text_loader.load()
+        print(document_text)
+
+
+async def file_type_handling(file_type: str, file: bytes):
+    match file_type:
+        case "pdf":
+            print("PDF detected")
+        case "txt":
+            print("txt detected")
+            await process_txt_file(file)
+        case "md":
+            print("md detected")
+        case "docx":
+            print("docx detected")
+        case _:
+            print("File type not recognized")
 
 
 @app.post("/files_upload")
-async def files_upload(files: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")]):
+async def files_upload(files: List[UploadFile] = File(...)):
     for file in files:
-        file_content = await file.read()
+        name_split = file.filename.split(".")  # Split the file name using the dot separator
+        file_type = name_split[1]  # Determine the file type
+        print(file_type)
 
-        document_text = await process_uploaded_file(file_content)
-        print(document_text)
+        file_content = await file.read()  # Read the file content
+
+        await file_type_handling(file_type, file_content)
+
+
 
