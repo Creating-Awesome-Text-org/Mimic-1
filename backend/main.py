@@ -3,6 +3,7 @@ import tempfile
 
 from fastapi import FastAPI
 from langchain.embeddings import OpenAIEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Pinecone
 from pydantic import BaseModel
@@ -49,7 +50,7 @@ async def mimic_credentials(credentials: Credentials):
 
 
 async def upload_documents(docs):
-    embeddings = OpenAIEmbeddings(openai_api_key='OPENAI KEY')
+    embeddings = HuggingFaceEmbeddings()
     pinecone.init(
         api_key=os.getenv("PINECONE_API_KEY"),  # Initialize pinecone link
         environment=os.getenv("PINECONE_ENV"),
@@ -59,7 +60,7 @@ async def upload_documents(docs):
         pinecone.create_index(
             name=index_name,
             metric='cosine',
-            dimension=1536
+            dimension=768
         )
 
     Pinecone.from_documents(docs, embeddings, index_name=index_name)
@@ -94,7 +95,6 @@ async def file_type_handling(file_type: str, file: bytes, file_name: str):
         case _:
             print("File type not recognized")
     await upload_documents(docs)
-
 
 
 @app.post("/files_upload")
