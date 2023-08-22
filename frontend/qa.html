@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/qa_style.css">
+  <title>Your Page Title</title>
+</head>
+<body>
+    <div class="logo">
+        <img class="logo-image" src="https://via.placeholder.com/159x143" alt="Logo Image">
+        <span class="logo-text">CATO<br/></span>
+        <span class="logo-subtext">Creating Awesome Text Org</span>
+    </div>
+  <div class="container">
+    <!-- Original Box 1 content -->
+    <div class="box" id="box1">
+      <div class="content" id="content1">
+        <span class="content-title">Context:<br/></span>
+        <span class="content-text">This window displays the relevant information within Pinecone Vector Database, to form the base of the Q&A answer</span>
+      </div>
+    </div>
+
+    <!-- Modified Box 2 for Q&A chat box -->
+    <div class="box" id="box2">
+      <div class="chat-box" id="chatBox">
+        <div class="chat-log" id="chatLog"></div>
+        <div class="input-box">
+          <input type="text" id="userInput" placeholder="Type your question here">
+          <button id="sendButton">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
