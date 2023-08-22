@@ -115,6 +115,20 @@ async def process_md_file(file: bytes, file_name: str):
         return docs
 
 
+async def process_docx_file(file: bytes, file_name: str):
+    with tempfile.NamedTemporaryFile(delete=False, prefix=file_name + "_") as temp_file:
+        temp_file.write(file)  # Create temporary file
+        temp_file_path = temp_file.name  # Get file name
+
+        loader = Docx2txtLoader(temp_file_path)
+        document_text = loader.load()
+
+        text_splitter = CharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+        docs = text_splitter.split_documents(document_text)
+        print(docs)
+        return docs
+
+
 async def file_type_handling(file_type: str, file: bytes, file_name: str):
     docs = []
     match file_type:
@@ -129,6 +143,7 @@ async def file_type_handling(file_type: str, file: bytes, file_name: str):
             docs = await process_md_file(file, file_name)
         case "docx":
             print("docx detected")
+            docs = await process_docx_file(file, file_name)
         case _:
             print("File type not recognized")
     await upload_documents(docs)
