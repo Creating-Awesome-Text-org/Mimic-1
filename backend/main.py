@@ -1,23 +1,31 @@
+# Generic imports
 import os
 import tempfile
 
-from fastapi import FastAPI
+# API imports
+from fastapi import FastAPI, UploadFile, File
+from pydantic import BaseModel
+from typing import List
+from starlette.middleware.cors import CORSMiddleware
+
+# Langchain Imports
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Pinecone
-from pydantic import BaseModel
-from starlette.middleware.cors import CORSMiddleware
-from fastapi import UploadFile, File
-from typing import List
 
-from backend import CredentialsEnvironment
-
+# Document loaders
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import UnstructuredMarkdownLoader
+from langchain.document_loaders import Docx2txtLoader
 
+# Vector db
 import pinecone
+
+# Environmental variables credential setting
+from backend import CredentialsEnvironment
+
 
 app = FastAPI()
 
