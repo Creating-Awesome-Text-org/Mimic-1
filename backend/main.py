@@ -14,6 +14,7 @@ from typing import List
 from backend import CredentialsEnvironment
 
 from langchain.document_loaders import TextLoader
+from langchain.document_loaders import PyPDFLoader
 
 import pinecone
 
@@ -70,13 +71,23 @@ async def process_txt_file(file: bytes, file_name: str):
     with tempfile.NamedTemporaryFile(delete=False, prefix=file_name + "_") as temp_file:
         temp_file.write(file)  # Create temporary file
         temp_file_path = temp_file.name  # Get file name
-        print(temp_file_path)
 
-        text_loader = TextLoader(temp_file_path)  # Load the text into text loader
-        document_text = text_loader.load()
+        loader = TextLoader(temp_file_path)  # Load the text into text loader
+        document_text = loader.load()
 
         text_splitter = CharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         docs = text_splitter.split_documents(document_text)
+        return docs
+
+async def process_pdf_file(file: bytes, file_name: str):
+    with tempfile.NamedTemporaryFile(delete=False, prefix=file_name + "_") as temp_file:
+        temp_file.write(file)  # Create temporary file
+        temp_file_path = temp_file.name  # Get file name
+
+        loader = PyPDFLoader(temp_file_path)
+        docs = loader.load_and_split()
+
+        print(docs)
         return docs
 
 
@@ -85,6 +96,7 @@ async def file_type_handling(file_type: str, file: bytes, file_name: str):
     match file_type:
         case "pdf":
             print("PDF detected")
+            docs = await process_pdf_file(file, file_name)
         case "txt":
             print("txt detected")
             docs = await process_txt_file(file, file_name)
