@@ -148,7 +148,8 @@ async def file_type_handling(file_type: str, file: bytes, file_name: str):
 @app.post("/files_upload")
 async def files_upload(files: List[UploadFile] = File(...)):
     for file in files:
-        name_split = file.filename.split(".")  # Split the file name using the dot separator
+        name = file.filename.replace("/", "_")  # Remove directory slashes
+        name_split = name.split(".")  # Split the file name using the dot separator
         file_type = name_split[1]  # Determine the file type
         file_name = name_split[0]
 
