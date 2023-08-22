@@ -38,13 +38,11 @@ async def mimic_credentials(credentials: Credentials):
 
 
 async def process_txt_file(file_content: bytes):
-    # Create a temporary file and write the content to it
-    with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-        temp_file.write(file_content)
+    with tempfile.NamedTemporaryFile(delete=False) as temp_file:  # Create a temp file
+        temp_file.write(file_content)  # Write bytes to temporary file
 
-        # Use the langchain library to load the text from the temporary file
-        text_loader = TextLoader(temp_file.name)
-        document_text = text_loader.load()
+        text_loader = TextLoader(temp_file.name)  # Load temp txt file
+        document_text = text_loader.load()  # Load the contents of the txt file
         print(document_text)
 
 
@@ -68,11 +66,9 @@ async def files_upload(files: List[UploadFile] = File(...)):
     for file in files:
         name_split = file.filename.split(".")  # Split the file name using the dot separator
         file_type = name_split[1]  # Determine the file type
-        print(file_type)
 
         file_content = await file.read()  # Read the file content
-
-        await file_type_handling(file_type, file_content)
+        await file_type_handling(file_type, file_content)  # File type specific upload to pinecone
 
 
 
