@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Upload</title>
+    <link rel="stylesheet" href="styles/upload_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <img src="resources/cato_icon.png" />
+        <div class="header_text">
+            <span class="main_text">CATO<br/></span>
+            <span class="sub_text">Creating Awesome Text Org</span>
+        </div>
+    </div>
+    <div class="container">
+        <button class="item-button" onclick="handleFileUpload()">
+            <div class="item">
+                <img class="image" src="resources/file_icon.png" alt="File icon">
+                <div class="text-box">
+                    <span class="title">File Upload:</span>
+                    <span class="description">Please select a file from your local computer to upload to Pinecone.</span>
+                </div>
+            </div>
+        </button>
+        <button class="item-button" onclick="handleDirectoryUpload()">
+            <div class="item">
+                <img class="image" src="resources/folder_icon.png" alt="Folder icon">
+                <div class="text-box">
+                    <span class="title">Directory Upload:</span>
+                    <span class="description">Please select a directory from your local computer to upload to Pinecone. This serves as a bulk upload capability.</span>
+                </div>
+            </div>
+        </button>
+    </div>
+    <input type="file" id="fileInput" multiple style="display: none;"> <!-- Hidden file input -->
+    <input type="file" id="directoryInput" webkitdirectory style="display: none;"> <!-- Hidden directory input -->
+    <script src="javascript/data_upload.js"></script>
+
+</body>
+</html>

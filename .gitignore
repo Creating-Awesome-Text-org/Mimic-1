@@ -160,3 +160,7 @@ cython_debug/
 .idea/
 credentials.py
 *.txt
+*.docx
+
+backend/node_modules
+*.json

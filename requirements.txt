@@ -5,3 +5,5 @@ tiktoken=0.4.0
 dnspython=2.4.2
 regex=2023.8.8
 loguru=0.7.0
+fastapi[all]
+pydantic=1.10.9
