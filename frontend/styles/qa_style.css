@@ -1,52 +1,131 @@
-/* Reset default margin and padding */
-body, h1, h2, h3, p, ul, li {
-  margin: 0;
-  padding: 0;
+body, h1, p, label, input, button {
+    margin: 0;
+    padding: 0;
+    border: none; /* Remove default border from buttons */
+    background: none; /* Remove default background from buttons */
 }
 
-/* Container for the two boxes */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ecebeb;
+}
+
+.header img {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+}
+
+.header_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.main_text {
+    font-size: 26.4px;
+    font-weight: bold;
+}
+
+.sub_text {
+    font-size: 15.4px;
+}
+
 .container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Adjust as needed */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust to your needs */
+  background-color: white;
 }
 
-/* Box styles */
 .box {
   width: 535px;
   height: 678px;
-  position: relative;
   background: #F1F8FC;
   border: 1px black solid;
-}
-
-/* Chat Box Styles */
-.chat-box {
-  width: 100%;
-  height: 100%;
-  background-color: #F1F8FC;
+  margin: 0 20px; /* Adjust spacing between the boxes */
   display: flex;
   flex-direction: column;
+  text-align: center;
+  position: relative;
 }
 
-.chat-log {
-  flex-grow: 1;
+.box-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.box-subtext {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Styles for the Q&A chat box */
+
+.chat-container {
+  margin-top: 10px;
   padding: 10px;
-  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  overflow-y: scroll;
+  height: calc(100% - 90px); /* Adjust the value to leave space for user input */
 }
 
-.input-box {
+.chat-container {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  overflow-y: scroll;
+  height: calc(100% - 90px); /* Adjust the value to leave space for user input */
+}
+
+.message {
+  margin-bottom: 10px;
+  word-wrap: break-word; /* Added to prevent message overflow */
+}
+
+.user-message {
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.assistant-message {
+  background-color: #e0f7fa;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.user-input {
   display: flex;
-  padding: 10px;
-  border-top: 1px solid black;
+  align-items: center;
+  padding: 8px;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  word-wrap: break-word; /* Added to prevent user input overflow */
 }
 
-#userInput {
-  flex-grow: 1;
-  padding: 5px;
+.user-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
 }
 
-#sendButton {
-  margin-left: 5px;
+.user-input button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
