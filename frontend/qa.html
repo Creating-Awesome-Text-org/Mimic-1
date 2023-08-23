@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/qa_style.css">
+    <title>Q&A</title>
+</head>
+<body>
+     <div class="header">
+        <img src="resources/cato_icon.png" />
+        <div class="header_text">
+            <span class="main_text">CATO<br/></span>
+            <span class="sub_text">Creating Awesome Text Org</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box left-box">
+            <div class="box-header">Context</div>
+            <div class="box-subtext">This window displays the relevant information within Pinecone Vector Database, to form the base of the Q&A answer</div>
+          <div class="chat-container" id="contextContainer"><!-- Existing messages will be displayed here --></div>
+        </div>
+
+        <div class="box right-box">
+            <div class="box-header">Q&A Chat</div>
+            <div class="box-subtext">Please type a question to query your knowledge base. Memory is active allowing for long term Q&A sessions as your knowledge grows.</div>
+            <div class="chat-container" id="chatContainer"><!-- Existing messages will be displayed here --></div>
+
+            <div class="user-input">
+              <input type="text" id="userInput" placeholder="Type your message...">
+              <button id="sendMessageBtn">Send</button>
+            </div>
+
+            <script src="javascript/chat.js"></script>
+        </div>
+    </div>
+</body>
+</html>
