@@ -1,6 +1,7 @@
 const chatContainer = document.getElementById("chatContainer");
 const userInput = document.getElementById("userInput");
 const sendMessageBtn = document.getElementById("sendMessageBtn");
+const endpoint_root = "http://127.0.0.1:8000";
 
 sendMessageBtn.addEventListener("click", sendMessage);
 
@@ -9,10 +10,26 @@ function sendMessage() {
   if (userMessage.trim() !== "") {
     appendMessage("user", userMessage);
     userInput.value = "";
-    // Simulate assistant response after a short delay
-    setTimeout(() => {
-      appendMessage("assistant", "Hi there! I'm here to assist.");
-    }, 500);
+
+    const requestData = {
+      question: userMessage
+    }; //Create the expected JSON object
+
+    fetch(endpoint_root + '/qa_question', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      const assistantResponse = data.result; // Adjust based on the actual response structure
+      appendMessage("assistant", assistantResponse);  // Simulate assistant response
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   }
 }
 

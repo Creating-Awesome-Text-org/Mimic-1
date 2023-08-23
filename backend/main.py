@@ -4,6 +4,8 @@ import tempfile
 
 # API imports
 from fastapi import FastAPI, UploadFile, File
+from langchain.chains import RetrievalQA
+from langchain.chat_models import ChatOpenAI
 from pydantic import BaseModel
 from typing import List
 from starlette.middleware.cors import CORSMiddleware
@@ -26,7 +28,6 @@ import pinecone
 # Environmental variables credential setting
 from backend import CredentialsEnvironment
 
-
 app = FastAPI()
 
 # CORS HANDLING: Local host allows for all origins as there will be no hosted info
@@ -35,6 +36,7 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["*"], a
 
 # Document Upload preparation
 index_name = "flourishing-humanity"
+embeddings = HuggingFaceEmbeddings()
 chunk_size = 1000
 chunk_overlap = 0
 
@@ -43,6 +45,10 @@ class Credentials(BaseModel):
     openai_api_key: str
     pinecone_api_key: str
     pinecone_env: str
+
+
+class Question(BaseModel):
+    question: str
 
 
 @app.get("/")
@@ -60,7 +66,6 @@ async def mimic_credentials(credentials: Credentials):
 
 
 async def upload_documents(docs):
-    embeddings = HuggingFaceEmbeddings()
     pinecone.init(
         api_key=os.getenv("PINECONE_API_KEY"),  # Initialize pinecone link
         environment=os.getenv("PINECONE_ENV"),
@@ -155,3 +160,22 @@ async def files_upload(files: List[UploadFile] = File(...)):
 
         file_content = await file.read()  # Read the file content
         await file_type_handling(file_type, file_content, file_name)  # File type specific upload to pinecone
+
+
+async def qa_process(question: str):
+    pinecone.init(
+        api_key=os.getenv("PINECONE_API_KEY"),  # Initialize pinecone link
+        environment=os.getenv("PINECONE_ENV"),
+    )
+
+    vector_store = Pinecone.from_existing_index(index_name, embeddings)
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+    qa_chain = RetrievalQA.from_chain_type(llm, retriever=vector_store.as_retriever())
+    response = qa_chain({"query": question})
+    return response
+
+
+@app.post("/qa_question")
+async def qa_question(question: Question):
+    response = await qa_process(question.question)
+    return response
