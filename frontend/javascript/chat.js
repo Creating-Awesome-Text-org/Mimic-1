@@ -1,4 +1,5 @@
 const chatContainer = document.getElementById("chatContainer");
+const contextContainer = document.getElementById("contextContainer")
 const userInput = document.getElementById("userInput");
 const sendMessageBtn = document.getElementById("sendMessageBtn");
 const endpoint_root = "http://127.0.0.1:8000";
@@ -25,7 +26,15 @@ function sendMessage() {
     .then(response => response.json())
     .then(data => {
       const assistantResponse = data.result; // Adjust based on the actual response structure
+      const sources = data.source_documents;  // Collect source documents
+      console.log(sources);
+
+
       appendMessage("assistant", assistantResponse);  // Simulate assistant response
+
+      for (const document of sources) {  // Access source documents
+        appendSource(document);}
+
     })
     .catch(error => {
       console.error('Error:', error);
@@ -39,4 +48,12 @@ function appendMessage(sender, message) {
   messageDiv.textContent = message;
   chatContainer.appendChild(messageDiv);
   chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to bottom
+}
+
+function appendSource(sourceDocument) {
+  const docDiv = document.createElement("div");
+  docDiv.classList.add("message", `sourceDocument`);
+  docDiv.textContent = sourceDocument.page_content;
+  contextContainer.appendChild(docDiv);
+  contextContainer.scrollTop = contextContainer.scrollHeight;
 }

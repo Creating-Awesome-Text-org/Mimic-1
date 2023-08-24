@@ -170,7 +170,10 @@ async def qa_process(question: str):
 
     vector_store = Pinecone.from_existing_index(index_name, embeddings)
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-    qa_chain = RetrievalQA.from_chain_type(llm, retriever=vector_store.as_retriever())
+    qa_chain = RetrievalQA.from_chain_type(llm, retriever=vector_store.as_retriever(),
+                                           return_source_documents=True)
+    # TODO Look into custom document processing: Customizing retrieved document
+    # processing: https://python.langchain.com/docs/modules/chains/document/
     response = qa_chain({"query": question})
     return response
 
@@ -178,4 +181,5 @@ async def qa_process(question: str):
 @app.post("/qa_question")
 async def qa_question(question: Question):
     response = await qa_process(question.question)
+    print(response)
     return response
