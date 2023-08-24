@@ -54,7 +54,19 @@ function appendSource(sourceDocument) {
   const docDiv = document.createElement("div");
   docDiv.classList.add("message", `context-message`);
 
-  docDiv.textContent = sourceDocument.page_content;
+    // Create content element
+  const contentElement = document.createElement("div");
+  contentElement.classList.add("content-line");
+  contentElement.textContent = sourceDocument.page_content;
+  docDiv.appendChild(contentElement);
+
+  // Create source element
+  const sourceElement = document.createElement("div");
+  sourceElement.classList.add("source-line");
+  sourceElement.textContent = "Source: " + sourceDocument.metadata.source; // Assuming metadata has a source property
+  docDiv.appendChild(sourceElement);
+
+  /*docDiv.textContent = sourceDocument.page_content;*/
   contextContainer.appendChild(docDiv);
   contextContainer.scrollTop = contextContainer.scrollHeight;
 }

@@ -100,6 +100,15 @@ body, h1, p, label, input, button {
     border-radius: 5px;
 }
 
+.content-line {
+    color: black
+}
+
+.source-line {
+    color: gray;
+    font-weight: bold;
+}
+
 .user-input {
   display: flex;
   align-items: center;
