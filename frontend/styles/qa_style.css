@@ -94,6 +94,12 @@ body, h1, p, label, input, button {
   border-radius: 5px;
 }
 
+.context-message {
+    background-color: #e0effa;
+    padding: 8px;
+    border-radius: 5px;
+}
+
 .user-input {
   display: flex;
   align-items: center;

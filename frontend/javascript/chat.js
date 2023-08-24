@@ -52,7 +52,8 @@ function appendMessage(sender, message) {
 
 function appendSource(sourceDocument) {
   const docDiv = document.createElement("div");
-  docDiv.classList.add("message", `sourceDocument`);
+  docDiv.classList.add("message", `context-message`);
+
   docDiv.textContent = sourceDocument.page_content;
   contextContainer.appendChild(docDiv);
   contextContainer.scrollTop = contextContainer.scrollHeight;
