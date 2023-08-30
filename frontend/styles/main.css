@@ -141,7 +141,17 @@ body {
     height: 20%;
 }
 
+/* List styling */
+ul, ol {
+    text-align: center; /* Center the list content */
+    padding: 0; /* Remove default padding */
+}
 
+ul li, ol li {
+    list-style-position: inside; /* Place the bullet/number inside the list item */
+    text-align: center; /* Align list item text to the left */
+    margin: 1em 0; /* Add spacing between list items */
+}
 
 
 
