@@ -14,6 +14,10 @@ document.getElementById("box4").addEventListener("click", function() {
   window.location.href = "doc_generation.html";
 });
 
+document.getElementById("box5").addEventListener("click", function() {
+  window.location.href = "data_upload.html";
+});
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const infoButton = document.querySelector('.info-icon');
