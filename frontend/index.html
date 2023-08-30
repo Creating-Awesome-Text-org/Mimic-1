@@ -39,4 +39,34 @@
             <div class="box-text">Doc Generation</div>
         </button>
       </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-content">
+                <h2>Information</h2>
+                <h3>Q&A</h3>
+                <p>This tool allows you to query your uploaded documents, in a Q&A manner.
+                    This tool makes use of Pinecone to perform a similarity query on your submitted query, the
+                    resources found to be
+                    most similar will be used to construct a response from the chatbot. Additionally, the chatbot
+                    has in-chat memory and can reference previous answers</p>
+                <p>Please type your query into the Q&A Chat Box:</p>
+                <img src="resources/qa_chat_box.png" alt="Query">
+                <p>The query will be run and a response generated based on your query request. Below is an example:</p>
+                <img src="resources/qa_chat_response.png" alt="Response">
+                <p>All resource related context will be displayed in the context window on the left. Example below: </p>
+                <img src="resources/context.png" alt="Context Window">
+                <p>Please note, this tool is designed to Q&A over existing documents only, if no similarities are found
+                    it will state the case that no material was found and as such no complete response could be generated.</p>
+                <h4>Use Case</h4>
+                <p>A primary use-case of this tool is within academic research, to determine sources of similar
+                    context to support or find out more about a topic.</p>
+                <hr>
+                <h3>Credentials</h3>
+                <h3>Generative</h3>
+                <h3>Doc Generation</h3>
+                <button class="close-button" id="closeButton">Close</button>
+            </div>
+        </div>
+    </div>
 </body>
