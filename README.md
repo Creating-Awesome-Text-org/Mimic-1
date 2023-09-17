@@ -2,12 +2,18 @@
 _Author mimicking using OpenAI with available local information._
 
 ## Intro
-Use existing generative AI models created by OpenAI (ChatGPT) within the context of local information
-in order to effectively mimic the author's style with requisite knowledge. 
+Evaluate existing AI large language models (llm's) to determine optimal parameters and use within the following contexts:
+- **Recreate:** Generate document sections based on previous examples within the document knowledge base. 
+- **Novel Generation:** Generate novel text based on the user query.
+- **Improvements:** Based on a given selection of text, improve the text grammatically, structurally, and contextually.
+- **Mimic:** Mimic tbe writing style of an author in order to reproduce text inline with an author's standards and idiosyncrasies.
 
-## Important
-In order to use this software please ensure that you have OpenAI and Pinecone API keys. 
-Please never share this key publicly or on GitHub. 
+
+## Application
+An application has been developed in order to effectively query a user's document knowledge based. 
+This application is open to further development based on the results of the **experimentation** to produce optimal results. 
+The application can be used as follows: 
+
 
 
 ## Privacy
