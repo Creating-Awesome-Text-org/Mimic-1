@@ -28,3 +28,4 @@ urllib3==1.26.16
 uvicorn==0.23.2
 huggingface-hub==0.16.4
 sentence-transformers==2.2.2
+python-multipart==0.0.5
