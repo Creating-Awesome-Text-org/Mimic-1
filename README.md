@@ -80,12 +80,15 @@ Please note the below example draws on notes taken from the book the **Phoenix P
 ![CATO QA](images/qa.png)
 
 On the right-hand side there exists a chat-box where the user can state their query:
+
 ![CATO QA Chat Box](images/qa_chat_box.png)
 
 On the left-hand side a context window contains all context to the user's query.
+
 ![QA Context](images/context.png)
 
 A response is formulated based on the context:
+
 ![CATO QA Chat Box](images/qa_chat_response.png)
 
 
