@@ -67,6 +67,11 @@ The following file types are supported for upload:
 - txt
 - md
 
+**Note:** Documents you wish to upload should be placed within the `kb` directory. 
+This allows you to keep better track of those already uplaoded. 
+
+**Additionally:** Please utilize the following document naming protocol: `title-author`
+
 
 #### Question and Answer
 This feature allows you to hold a Q&A over your knowledge base. 
@@ -92,8 +97,16 @@ The ideas behind them were as follows:
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 ## Experimentation
+Experimentation is performed to determine the optimal model and parameter arrangement for the specified use cases.
+The experimentation is structured and performed within `notebooks/experimentation.ipynb`. 
 
+### Important Experiment Notes:
+- Experimentation only accepts .txt documents or documents already in your vector database (the Mimic application can be used to upload different document types). 
+- It is essential that the documents uploaded follow the specified document naming convention: `title-author` (this allows for correct metadata creation)
+- Addition of multiple parameters for experimentation, increases the experiment pool size exponentially. Please ensure you know the number of experiments created before running them.
+- Please be aware of open-source model limitations. Often open-source models are rate or context limited, such that sets of experiments may fail due to this
 
+**Please consult experimentation.ipynb for further experiment instructions**
 --------------------------------------------------------------------------------------------------------------------------------------
 ## Development
 
@@ -110,6 +123,72 @@ backend/
 images/
     Directory of images used in README file
 ```
+
+### Environment
+During the development of the initial phase of Mimic and the experimentation, a Conda virtual environment was utilized. 
+The `requirements.txt` file provides all dependencies. 
+A docker container is constructed in order to simplify the running and execution of the Mimic application. 
+Please note the build time for the docker container is approximately 2 minutes due to the extensive dependencies of langchain and various models.
+
+#### Creating a Conda Virtual Environment
+Please execute the following command from the terminal within the project root directory:
+
+```conda env create -f environment.yml```
+
+This will create the conda virtual environment for project use. 
+
+#### Creating a Jupyter Notebook Kernel from a Conda Environment
+This Kernel is required to execute the `experimentation.ipynb`. Please follow the below steps:
+
+1. Ensure that your conda virtual environment is active.
+2. Execute the following command (Please rename firstEnv to your desired name):
+  ```
+  conda install -c anaconda ipykernel
+  python -m ipykernel install --user --name=firstEnv
+  ```
+3. Access your Jupyter Notebook (such as experimentation.ipynb)
+4. Select kernel and select the name of your newly created kernal
+
+**Note:** Any dependency additions made to your conda virtual environment are reflected in the Jupyter Notebook Kernel as well. 
+
+### Future Development
+The below lays out the thoughts on future development within the Mimic project: 
+
+#### Document Generation
+Document Generation is linked to the undeveloped tool within the Mimic application. The idea was to be able to specify a 
+document template, and for a LLM and vector database to generate novel content that was based and linked back to previous relevant literature. 
+This aspect potentially should be able to perform the writing style mimicking of which the application is named after, to enable fast production of 
+quality documents within an author's style. 
+
+#### Generative
+Generative is linked to the undeveloped tool within the Mimic application. The concept is to contain a LLM oriented around novel content generation, 
+such that it is capable of producing novel content, backed by information retrieved from the knowledge base. This tool is closely related to the **Document Generation** tool
+explained above. 
+
+#### Experimentation
+The below ideas are related to experimentation: 
+
+##### Chained Models
+The current for of experimentation relies on a single LLM model. Langchain has the capability to chain multiple models together,
+each with a specified functionality. This results in a chain of models each specified to perform a specific function. 
+Experimentation should consider the application of multiple chained models for performance comparison against single model results. 
+
+The below are links to documentation on model chaining within Langchain:
+**ADD HERE** 
+
+##### Context Refinement
+The user query specifies context returned from the vector database. This context is made available to the LLM for inclusion in text generation. 
+However, the form and state of the context effects the LLM text generation. This addition to the experimentation will allow for refinement of
+the returned context by applying different preprocessing models to the returned context. The below link showcases the multiple forms 
+of contextual refinement to be considered for experimentation.
+**ADD HERE**
+
+##### Code Applicability
+This experimental variation possibility relates to comparing the performance of multiple code-oriented LLM models on an existing code base. 
+This may require modification of the document naming protocol and an additional form of document embedding. 
+The goal of this experiment is to determine the optimal parameters to be utilized on LLM code generation based on an existing code base. 
+Please review the following documentation which will aid in its development:
+**ADD HERE**
 
 ------------------------------------------------------------------------------------------------------------------------------------
 ## Resources
