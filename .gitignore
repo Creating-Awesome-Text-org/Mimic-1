@@ -161,6 +161,7 @@ cython_debug/
 *.txt
 *.docx
 /notebooks/credentials.py
+mimic_venv/
 
 backend/node_modules
 *.json

@@ -149,27 +149,33 @@ images/
 ### Environment
 During the development of the initial phase of Mimic and the experimentation, a Conda virtual environment was utilized. 
 The `requirements.txt` file provides all dependencies. 
+Due to the majority of dependencies being installed through pip, venv is the suggested virtual environment software. 
+The below steps demonstrate how to create the virtual environment and jupyter notebook kernel.
+
 A docker container is constructed in order to simplify the running and execution of the Mimic application. 
 Please note the build time for the docker container is approximately 2 minutes due to the extensive dependencies of langchain and various models.
 
 #### Creating a Conda Virtual Environment
 Please execute the following command from the terminal within the project root directory:
 
-```conda env create -f environment.yml```
+```
+python -m venv mimic_venv
+source mimic_venv/bin/activate
+pip install -r requirements.txt
+```
 
-This will create the conda virtual environment for project use. 
+This will create the virtual environment for project use. A new direcctory called `mimic/` will appear within the project
 
 #### Creating a Jupyter Notebook Kernel from a Conda Environment
 This Kernel is required to execute the `experimentation.ipynb`. Please follow the below steps:
 
 1. Ensure that your conda virtual environment is active.
 2. Execute the following command (Please rename firstEnv to your desired name):
-  ```
-  conda install -c anaconda ipykernel
-  python -m ipykernel install --user --name=firstEnv
-  ```
+```
+python -m ipykernel install --user --name=mimic_venv
+```
 3. Access your Jupyter Notebook (such as experimentation.ipynb)
-4. Select kernel and select the name of your newly created kernal
+4. Select kernel and select the name of your newly created kernel (mimic_venv)
 
 **Note:** Any dependency additions made to your conda virtual environment are reflected in the Jupyter Notebook Kernel as well. 
 
