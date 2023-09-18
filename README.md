@@ -204,21 +204,22 @@ each with a specified functionality. This results in a chain of models each spec
 Experimentation should consider the application of multiple chained models for performance comparison against single model results. 
 
 The below are links to documentation on model chaining within Langchain:
-**ADD HERE** 
+- https://python.langchain.com/docs/modules/chains/
 
 ##### Context Refinement
 The user query specifies context returned from the vector database. This context is made available to the LLM for inclusion in text generation. 
 However, the form and state of the context effects the LLM text generation. This addition to the experimentation will allow for refinement of
 the returned context by applying different preprocessing models to the returned context. The below link showcases the multiple forms 
 of contextual refinement to be considered for experimentation.
-**ADD HERE**
+- https://python.langchain.com/docs/modules/data_connection/retrievers/contextual_compression/
+- https://python.langchain.com/docs/use_cases/question_answering.html (specifically the **Customizing retrieved document processing** section)
 
 ##### Code Applicability
 This experimental variation possibility relates to comparing the performance of multiple code-oriented LLM models on an existing code base. 
 This may require modification of the document naming protocol and an additional form of document embedding. 
 The goal of this experiment is to determine the optimal parameters to be utilized on LLM code generation based on an existing code base. 
 Please review the following documentation which will aid in its development:
-**ADD HERE**
+- https://python.langchain.com/docs/use_cases/code_understanding
 
 ------------------------------------------------------------------------------------------------------------------------------------
 ## Resources
