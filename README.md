@@ -22,13 +22,15 @@ The application can be used as follows:
 
 ### Running It
 #### Application
-In order to run the application please execute the following from the project root directory (where Dockerfile is located).
-This will construct a docker container, and run the container, opening the application. This will install all required dependencies
-from requirements.txt, start the local server running, and open the home web-page.
+In order to run the application, 2 steps need to be completed: 
+1. Build and Run the docker container: The docker container will install all dependencies and launch a local server where all of the functionality is located. The below commands should be used:
 ```
 docker build -t mimic .
 docker run -p 8000:8000 mimic
 ```
+2. Open the `frontend/index.html` webpage in your web browser. If you are on PyChamr, a browser icon will appear in the top-right corner of the screen, alternatively right clicking on the file and selecting *open with* will allow you to open it in your browser. 
+
+
 
 #### Server
 In order to run the FastAPI server only, please execute the following:
