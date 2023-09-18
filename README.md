@@ -106,6 +106,25 @@ The experimentation is structured and performed within `notebooks/experimentatio
 - Addition of multiple parameters for experimentation, increases the experiment pool size exponentially. Please ensure you know the number of experiments created before running them.
 - Please be aware of open-source model limitations. Often open-source models are rate or context limited, such that sets of experiments may fail due to this
 
+### Experiment Environment
+In order to give the `experimentation.ipynb` access to essential Pinecone and OpenAI API keys, the keys are set as environmental variables. 
+Please perform the following steps in order to ensure your API keys are in no danger of leaking: 
+
+1. Create a file called `credentials.py` within the `notebooks/` directory.
+2. Copy and paste the below code into the file, placing your correct API keys:
+```
+import os
+
+
+def set_credentials():
+    os.environ['OPENAI_API_KEY'] = 'OPENAI API KEY'
+    os.environ["PINECONE_API_KEY"] = 'PINECONE API KEY'
+    os.environ["PINECONE_ENV"] = 'PINECONE ENVIRONMENT'
+```
+3. This file is already included in the `.gitignore` file and so will be ignored by github, thus ensuring your keys safety. 
+4. The `experimentation.ipynb` already uses the `set_credentials()` function. 
+5. Please ensure that this file is never added to Github. Doing this will cause an API key leak.
+
 **Please consult experimentation.ipynb for further experiment instructions**
 --------------------------------------------------------------------------------------------------------------------------------------
 ## Development
