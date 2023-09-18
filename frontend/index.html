@@ -4,42 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
-    <script src="javascript/capabilities.js" defer></script>
+    <script src="/frontend/javascript/capabilities.js" defer></script>
     <title>Capabilities</title>
 </head>
 <body>
 <div class="header">
-        <img src="resources/cato_icon.png" />
+        <img src="/frontend/resources/cato_icon.png" />
         <div class="header_text">
             <span class="main_text">CATO<br/></span>
             <span class="sub_text">Creating Awesome Text Org</span>
         </div>
         <div class="info-button">
             <button class="info-icon">
-                <img src="resources/info_icon.png" alt="Info Icon">
+                <img src="/frontend/resources/info_icon.png" alt="Info Icon">
             </button>
         </div>
     </div>
 
     <div class="container">
         <button class="box" id="box1">
-            <img class="box-image" src="resources/qa.png" alt="Image 1">
+            <img class="box-image" src="/frontend/resources/qa.png" alt="Image 1">
             <div class="box-text">Q&A</div>
         </button>
         <button class="box" id="box2">
-            <img class="box-image" src="resources/credentials.png" alt="Image 2">
+            <img class="box-image" src="/frontend/resources/credentials.png" alt="Image 2">
             <div class="box-text">Credentials</div>
         </button>
         <button class="box" id="box3">
-            <img class="box-image" src="resources/generative.png" alt="Image 3">
+            <img class="box-image" src="/frontend/resources/generative.png" alt="Image 3">
             <div class="box-text">Generative</div>
         </button>
         <button class="box" id="box4">
-            <img class="box-image" src="resources/doc_generation.png" alt="Image 4">
+            <img class="box-image" src="/frontend/resources/doc_generation.png" alt="Image 4">
             <div class="box-text">Doc Generation</div>
         </button>
         <button class="box" id="box5">
-            <img class="box-image" src="resources/upload_icon.png" alt="Image 5">
+            <img class="box-image" src="/frontend/resources/upload_icon.png" alt="Image 5">
             <div class="box-text">Doc Upload</div>
         </button>
       </div>
@@ -55,11 +55,11 @@
                     most similar will be used to construct a response from the chatbot. Additionally, the chatbot
                     has in-chat memory and can reference previous answers</p>
                 <p>Please type your query into the Q&A Chat Box:</p>
-                <img src="resources/qa_chat_box.png" alt="Query">
+                <img src="/frontend/resources/qa_chat_box.png" alt="Query">
                 <p>The query will be run and a response generated based on your query request. Below is an example:</p>
-                <img src="resources/qa_chat_response.png" alt="Response">
+                <img src="/frontend/resources/qa_chat_response.png" alt="Response">
                 <p>All resource related context will be displayed in the context window on the left. Example below: </p>
-                <img src="resources/context.png" alt="Context Window">
+                <img src="/frontend/resources/context.png" alt="Context Window">
                 <p>Please note, this tool is designed to Q&A over existing documents only, if no similarities are found
                     it will state the case that no material was found and as such no complete response could be generated.</p>
                 <h4>Use Case</h4>
@@ -70,7 +70,7 @@
                 <h3>Credentials</h3>
                 <p>The credentials forms allows you to setup your credentials for both Pinecone and OpenAI.
                 The credentials form looks as follows:</p>
-                <img src="resources/credentials_ex.png" alt="Credentials form">
+                <img src="/frontend/resources/credentials_ex.png" alt="Credentials form">
                 <p>Please consult the project **README** for further information on finding the API keys.
                 For more information on the tools used, please further
                     review <a href="https://www.pinecone.io/">Pinecone</a> and <a href="https://openai.com/">OpenAI</a>.</p>
@@ -91,8 +91,8 @@
                         Please note, subdirectories are not supported at this point.</li>
                 </ol>
                 <p>Below is an example of the upload form:</p>
-                <img src="resources/doc_upload_1.png" alt="Document upload 1">
-                <img src="resources/doc_upload_2.png" alt="Document upload 2">
+                <img src="/frontend/resources/doc_upload_1.png" alt="Document upload 1">
+                <img src="/frontend/resources/doc_upload_2.png" alt="Document upload 2">
                 <h4>The following documents types are supported:</h4>
                 <ul>
                     <li>docx</li>

@@ -11,7 +11,6 @@ from typing import List
 from starlette.middleware.cors import CORSMiddleware
 
 # Langchain Imports
-from langchain.embeddings import OpenAIEmbeddings
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Pinecone
